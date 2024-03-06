@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function TopBar() {
     const [isButton1Bold, setIsButton1Bold] = useState(true);
@@ -14,14 +16,21 @@ export default function TopBar() {
         setIsButton1Bold(false);
       }
     };
+    const navigation = useNavigation();
+    const handleNavigate = () => {
+        navigation.navigate('Chat');
+    };
+    const handleNavigate2 = () => {
+      navigation.navigate('Home');
+  };
   return (
     <View style={[styles.container, Platform.OS === 'ios' && styles.shadow]}>
       <Text style={styles.text}>ConvoGuru</Text>
       <View style={styles.rightButtons}>
-        <TouchableOpacity onPress={() => handleToggleBold(1)}>
+        <TouchableOpacity onPress={ handleNavigate2 }>
           <Text style={[styles.buttonText, isButton1Bold && styles.boldText]}>Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleToggleBold(2)}>
+        <TouchableOpacity onPress={ handleNavigate }>
           <Text style={[styles.buttonText, isButton2Bold && styles.boldText]}>Chat</Text>
         </TouchableOpacity>
       </View>
