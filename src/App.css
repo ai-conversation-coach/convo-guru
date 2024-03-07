@@ -21,6 +21,8 @@ body {
   font-weight: bold;
   margin-top: 15px;
   margin-bottom: 15px;
+  text-decoration: none;
+  color: black;
 }
 
 .pages {

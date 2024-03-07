@@ -7,9 +7,9 @@ const Navbar = (props) => {
   return (
     <>
         <div className="navbar">
-            <div className="title">ConvoGuru</div>
+            <Link to="/home" className="title" onClick={() => setSelectedLink('home')}>ConvoGuru</Link>
             <div className="pages">
-                <Link to="/home" className={selectedLink === 'home' ? 'active' : 'link'} key='home' onClick={() => setSelectedLink('home')}>
+                <Link to="/home" className={selectedLink === 'home' ? 'active' : 'link'} onClick={() => setSelectedLink('home')}>
                 Home
                 </Link>
                 <Link to="/chat" className={selectedLink === 'chat' ? 'active' : 'link'} onClick={() => setSelectedLink('chat')}>
