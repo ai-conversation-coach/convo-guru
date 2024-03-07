@@ -1,5 +1,5 @@
-import React, {useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, Image, Platform} from 'react-native';
+import React, {useState, useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, Image, Platform, ScrollView} from 'react-native';
 import TopBar from './TopBar'; // Importing the TopBar component
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -7,8 +7,10 @@ import { useRoute } from '@react-navigation/native';
 
 export default function ChatScreen({navigation}) {
   const [currentTime, setCurrentTime] = useState('');
+  const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
   const [isInputFocused, setInputFocused] = useState(false);
+  const scrollViewRef = useRef();
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -24,10 +26,11 @@ export default function ChatScreen({navigation}) {
     }, []);
 
     const handleSend = () => {
-      // Implement logic to send message
-      console.log('Message sent:', message);
-      // Clear the input box
+      const newMessage = { id: messages.length + 1, text: message, time: currentTime };
+      setMessages([...messages, newMessage]);
       setMessage('');
+      // Scroll to the end of the messages
+      scrollViewRef.current.scrollToEnd({ animated: true });
   };
 
 
@@ -35,6 +38,18 @@ export default function ChatScreen({navigation}) {
     <View style={styles.container}>
       <TopBar navigation={navigation} /> 
       <Text style={styles.time}>{currentTime}</Text>
+      <ScrollView
+          ref={scrollViewRef}
+          contentContainerStyle={styles.content}
+          onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}
+      >
+          {messages.map((msg) => (
+              <View key={msg.id} style={msg.sender === 'me' ? styles.otherMessage : styles.myMessage}>
+                  <Text>{msg.text}</Text>
+                  <Text style={styles.messageTime}>{msg.time}</Text>
+              </View>
+          ))}
+      </ScrollView>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.bottomBarContainer}
@@ -70,8 +85,29 @@ export default function ChatScreen({navigation}) {
         color: 'grey',
     },
     content: {
-      flex: 1
+      flex: 1,
+      paddingBottom: 10,
     },
+    myMessage: {
+      alignSelf: 'flex-end',
+      backgroundColor: '#0085FF',
+      maxWidth: '70%',
+      borderRadius: 20,
+      paddingRight: 10,
+      padding: 10,
+      marginBottom: 5,
+  },
+  otherMessage: {
+      alignSelf: 'flex-start',
+      backgroundColor: '#E5E5EA',
+      maxWidth: '70%',
+      borderRadius: 20,
+      padding: 10,
+      marginBottom: 10,
+  },
+  messageText: {
+      fontSize: 16,
+  },
     bottomBarContainer: {
       position: 'absolute',
       bottom: 0,
