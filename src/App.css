@@ -43,6 +43,7 @@ body {
 
 .divider {
   border-top: 5px solid black;
+  margin: 0;
 }
 
 .tilted-rectangle {
@@ -98,4 +99,46 @@ body {
   position: absolute;
   bottom: 90%;
   transform: skewY(4deg);
+}
+
+.chat {
+  text-align: center;
+}
+
+.chat-title {
+  margin-top: 30px;
+  margin-bottom: 0px;
+  font-size: 48px;
+}
+
+.message-dashboard {
+  width: 900px;
+  height: 550px;
+  position: absolute;
+  background-color: white;
+  border-radius: 80px;
+  border: 1px solid #ddd;
+  transform: skewY(4deg); 
+  right: 5%;
+  top: -20px;
+  float: right;
+}
+
+.text-bar {
+  margin: 10px;
+}
+
+.chat-screen {
+  height: 75%;
+}
+
+.description {
+  width: 350px;
+  position: absolute;
+  float: left;
+  left: 100px;
+  top: 30px;
+  transform: skewY(4deg); 
+  color: white;
+  font-size: 18px;
 }
