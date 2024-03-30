@@ -10,6 +10,11 @@ import ChatScreen from './ChatScreen';
 
 const Stack = createStackNavigator();
 
+
+//TO DO LIST
+// Rest Client to request to the server, look up stuff on rest clients and how to implement them into this...
+
+
 export default function App() {
   return (
       <NavigationContainer>

@@ -91,6 +91,7 @@ export default function ChatScreen({navigation}) {
     myMessage: {
       alignSelf: 'flex-end',
       backgroundColor: '#0085FF',
+      color: "white",
       maxWidth: '70%',
       borderRadius: 20,
       paddingRight: 10,
@@ -106,8 +107,12 @@ export default function ChatScreen({navigation}) {
       marginBottom: 10,
   },
   messageText: {
-      fontSize: 16,
+    color: "white",
+    fontSize: 16,
   },
+  messageTime: {
+    fontSize: 10,
+},
     bottomBarContainer: {
       position: 'absolute',
       bottom: 0,
