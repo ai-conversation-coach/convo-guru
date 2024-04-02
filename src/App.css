@@ -59,7 +59,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -126,12 +125,29 @@ body {
   float: right;
 }
 
-.text-bar {
+.chat-screen {
+  height: 75%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: auto;
+}
+
+#form-container {
   margin: 10px;
 }
 
-.chat-screen {
-  height: 75%;
+#submit {
+  margin: 20px;
+}
+
+#typed-message {
+  width: 65%;
+}
+
+.text-bar {
+  margin: 10px;
 }
 
 .description {
@@ -143,4 +159,36 @@ body {
   transform: skewY(4deg); 
   color: white;
   font-size: 18px;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  max-width: 30%;
+  animation: flyUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+.user-message {
+  background-color: #007bff;
+  color: white;
+  float: right;
+}
+
+.bot-message {
+  background-color: #e7e7e7;
+  color: black;
+  float: left;
+}
+
+@keyframes flyUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
