@@ -72,10 +72,10 @@ const styles = StyleSheet.create({
   shadow: {
     ...Platform.select({
       ios: {
-        shadowColor: 'grey',
-        shadowOpacity: .5,
-        shadowRadius: 2,
-        shadowOffset: { width: 0, height: 5 },
+        shadowColor: '#000',
+        shadowOpacity: 0.5,
+        shadowRadius: 4,
+        shadowOffset: { width: 0, height: 2 },
       },
       android: {
         elevation: 4,

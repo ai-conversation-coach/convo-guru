@@ -10,11 +10,6 @@ import ChatScreen from './ChatScreen';
 
 const Stack = createStackNavigator();
 
-
-//TO DO LIST
-// Rest Client to request to the server, look up stuff on rest clients and how to implement them into this...
-
-
 export default function App() {
   return (
       <NavigationContainer>
@@ -26,16 +21,4 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
   );
-  }
-  const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    time: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 20,
-    },
-  });
+}
