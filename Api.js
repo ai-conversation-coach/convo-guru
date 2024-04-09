@@ -1,30 +1,28 @@
 // api.js
-
 import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: 'https://api.example.com', // Your API base URL
-});
+const BASE_URL = 'https://api.example.com';
 
-export const fetchData = async () => {
+export const sendMessage = async (message) => {
   try {
-    const response = await instance.get('/data');
+    const response = await axios.post(`${BASE_URL}/messages`, { message });
     return response.data;
   } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error; // Rethrow the error to handle it at the caller
+    console.error('Error sending message:', error);
+    throw error;
   }
 };
 
-export const postData = async (data) => {
+export const getMessages = async () => {
   try {
-    const response = await instance.post('/data', data);
+    const response = await axios.get(`${BASE_URL}/messages`);
     return response.data;
   } catch (error) {
-    console.error('Error posting data:', error);
-    throw error; // Rethrow the error to handle it at the caller
+    console.error('Error getting messages:', error);
+    throw error;
   }
 };
+
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
